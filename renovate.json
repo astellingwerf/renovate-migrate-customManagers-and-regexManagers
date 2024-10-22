@@ -1,0 +1,26 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "datasourceTemplate": "sbt-package",
+      "fileMatch": [
+        "dependency.xml$"
+      ],
+      "matchStringsStrategy": "any",
+      "versioningTemplate": "ivy",
+      "depNameTemplate": "{{group}}:{{name}}",
+      "matchStrings": [
+        "org=\"(?<group>.+)\" name=\"(?<name>.+)\" rev=\"(?<currentValue>.+)\""
+      ]
+    }
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["(^|/).gitlab-ci.yml$"],
+      "matchStrings": ["BASE_IMAGE_.*:\\s+\"(?<depName>[^:]*):(?<currentValue>[^@\\s]*)\""],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker"
+    }
+  ]
+}
