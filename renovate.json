@@ -1,21 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "configMigration": true,
-  "customManagers": [
-    {
-      "customType": "regex",
-      "datasourceTemplate": "sbt-package",
-      "fileMatch": [
-        "dependency.xml$"
-      ],
-      "matchStringsStrategy": "any",
-      "versioningTemplate": "ivy",
-      "depNameTemplate": "{{group}}:{{name}}",
-      "matchStrings": [
-        "org=\"(?<group>.+)\" name=\"(?<name>.+)\" rev=\"(?<currentValue>.+)\""
-      ]
-    }
+  "extends": [
+    "customManagers:tfvarsVersions"
   ],
+  "configMigration": true,
   "regexManagers": [
     {
       "fileMatch": ["(^|/).gitlab-ci.yml$"],
