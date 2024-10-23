@@ -4,10 +4,15 @@
     "customManagers:tfvarsVersions"
   ],
   "configMigration": true,
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": ["(^|/).gitlab-ci.yml$"],
-      "matchStrings": ["BASE_IMAGE_.*:\\s+\"(?<depName>[^:]*):(?<currentValue>[^@\\s]*)\""],
+      "customType": "regex",
+      "fileMatch": [
+        "(^|/).gitlab-ci.yml$"
+      ],
+      "matchStrings": [
+        "BASE_IMAGE_.*:\\s+\"(?<depName>[^:]*):(?<currentValue>[^@\\s]*)\""
+      ],
       "datasourceTemplate": "docker",
       "versioningTemplate": "docker"
     }
